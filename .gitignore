@@ -67,6 +67,7 @@ jspm_packages/
 .env.test.local
 .env.production.local
 .env.local
+env.example
 
 # parcel-bundler cache
 .cache
@@ -147,10 +148,11 @@ temp/
 # Docker
 .dockerignore
 
-# Data files (if they contain sensitive information)
+# Data files - ignore sensitive JSON files but keep directory structure
 data/*.json
 !data/sent-log.json
 
-# Profile files (if they contain sensitive information)
+# Profile files - ignore all profiles except examples
 profiles/*.json
+!profiles/*.example.json
 !profiles/default.json

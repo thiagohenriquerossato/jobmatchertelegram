@@ -1,0 +1,33 @@
+{
+  "title": "Example Job Title - Seniority Level — Contract Type (Location)",
+  "must": {
+    "any": [
+      "example_skill_1",
+      "example_skill_2",
+      "example_skill_3"
+    ],
+    "all": []
+  },
+  "related_any": [
+    "related_skill_1",
+    "related_skill_2",
+    "related_skill_3"
+  ],
+  "nice_to_have": [
+    "bonus_skill_1",
+    "bonus_skill_2",
+    "bonus_skill_3"
+  ],
+  "ban": [
+    "unwanted_skill_1",
+    "unwanted_skill_2",
+    "unwanted_skill_3"
+  ],
+  "seniority": [],
+  "contract": ["example_contract_1", "example_contract_2"],
+  "location": ["example_location_1", "example_location_2"],
+  "salary": {
+    "currency": "CURRENCY_CODE",
+    "min": 0
+  }
+}

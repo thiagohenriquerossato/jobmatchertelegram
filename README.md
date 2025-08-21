@@ -22,7 +22,14 @@ Bot automatizado que monitora grupos/canais do Telegram em busca de vagas de emp
 
 ### 1. Configuração
 
-Crie um arquivo `.env` na raiz do projeto:
+#### Configuração de Ambiente
+
+1. **Copie o template de exemplo:**
+   ```bash
+   cp env.example.template .env
+   ```
+
+2. **Edite o arquivo `.env` com suas configurações reais:**
 
 ```bash
 # Bot do Telegram
@@ -51,6 +58,8 @@ LINKEDIN_URL=https://www.linkedin.com/in/seu-perfil
 GITHUB_URL=https://github.com/seu-usuario
 PHONE_BR=+55 84 99999-9999
 ```
+
+> **📝 Nota:** Use `env.example.template` como base para criar seu arquivo `.env`. Nunca commite o arquivo `.env` real com suas credenciais!
 
 ### 2. Perfis
 
