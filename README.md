@@ -723,6 +723,4 @@ docker logs -f telegram-job-bot
 docker stop telegram-job-bot
 ```
 
----
 
-Se quiser, me diga seu **perfil ideal** (stack, senioridade, contratos aceitos, salário mínimo) e eu te devolvo um `profiles/thiago.json` redondinho.
