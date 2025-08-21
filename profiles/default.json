@@ -1,0 +1,71 @@
+{
+  "title": "Backend TypeScript (Pleno/Sênior) — PJ Remoto (LATAM/BR)",
+  "must": {
+    "any": [
+      "node",
+      "node.js",
+      "nodejs",
+      "typescript",
+      "nest",
+      "nestjs",
+      "express",
+      "fastify"
+    ],
+    "all": []
+  },
+  "related_any": [
+    "php",
+    "laravel",
+    "symfony",
+    "lamp",
+    "java",
+    "spring",
+    "spring boot",
+    "kotlin"
+  ],
+  "nice_to_have": [
+    "aws",
+    "postgres",
+    "postgresql",
+    "redis",
+    "rabbitmq",
+    "docker",
+    "kubernetes",
+    "microservices",
+    "microsservicos",
+    "prisma",
+    "typeorm",
+    "clean architecture",
+    "cqrs"
+  ],
+  "ban": [
+    "android",
+    "aaos",
+    "automotive",
+    "automotive os",
+    "ios",
+    "mobile",
+    "flutter",
+    "react native",
+    "xamarin",
+    "unity",
+    "qa",
+    "tester",
+    "testador",
+    "support",
+    "suporte",
+    "estágio",
+    "estagio",
+    "trainee",
+    "presencial",
+    "voluntário",
+    "voluntario"
+  ],
+  "seniority": [],
+  "contract": ["pj", "remoto", "remote", "híbrido", "hibrido", "clt"],
+  "location": ["remoto", "anywhere", "brasil", "latam", "gmt-3", "home office"],
+  "salary": {
+    "currency": "BRL",
+    "min": 5000
+  }
+}

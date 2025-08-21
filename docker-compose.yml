@@ -1,0 +1,69 @@
+# docker-compose.yml (arquivo completo)
+#
+# Sobe dois serviços:
+# - telegram-bot: seu bot + servidor /ingest (Express)
+# - relay: leitor MTProto (contorna grupos que bloqueiam bots) e envia para /ingest
+#
+# Observações:
+# - O relay fala com o bot pelo hostname do serviço: http://telegram-job-bot:3210/ingest
+# - Ambos carregam o .env da raiz (API_ID/API_HASH/RELAY_SESSION usados pelo relay)
+# - Monta volumes para persistir data/ (sent-log.json) e ler profiles/
+# - Mapeia a porta 3210 para facilitar testes via curl no host (opcional)
+#
+services:
+  telegram-bot:
+    build: .
+    container_name: telegram-job-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Garante que o Express escute a 0.0.0.0 no container
+      - INGEST_PORT=${INGEST_PORT:-3210}
+      - NODE_ENV=production
+    volumes:
+      - ./data:/app/data:rw
+      - ./profiles:/app/profiles:ro
+      - /home/thiagorossato/Downloads/CV-Thiago-Rossato.pdf:/app/assets/CV.pdf:ro
+    ports:
+      - "3210:3210"    # opcional; útil para testar: curl http://localhost:3210/ingest
+    networks:
+      - bot-network
+    healthcheck:
+      # (simples) apenas verifica que o processo Node está vivo
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: ["node", "--experimental-strip-types", "--no-warnings", "src/index.ts"]
+
+  relay:
+    build: .
+    container_name: telegram-job-relay
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # IMPORTANTES para o relay:
+      # Dentro da rede do compose, o relay deve chamar o serviço "telegram-bot" pelo nome do container
+      - INGEST_URL=http://telegram-job-bot:3210/ingest
+      # (opcional) filtre os chats que o relay vai ler; você já tem em .env, mas pode sobrepor aqui:
+      # - WATCH_CHATS=@vagastibr,-1001234567890
+    depends_on:
+      - telegram-bot
+    volumes:
+      - ./data:/app/data:rw     # útil se você preferir salvar a sessão MTProto em arquivo
+    networks:
+      - bot-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    command: ["node", "--experimental-strip-types", "--no-warnings", "src/relay.ts"]
+
+networks:
+  bot-network:
+    driver: bridge

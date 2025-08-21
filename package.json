@@ -1,0 +1,28 @@
+{
+  "name": "telegram-job-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-strip-types --no-warnings --watch src/index.ts",
+    "start": "node --experimental-strip-types --no-warnings src/index.ts",
+    "relay:login": "node --experimental-strip-types --no-warnings src/relay-login.ts",
+    "relay:list": "node --experimental-strip-types --no-warnings src/relay-list.ts",
+    "relay": "node --experimental-strip-types --no-warnings src/relay.ts"
+  },
+  "dependencies": {
+    "bullmq": "^5.58.0",
+    "cheerio": "^1.1.2",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "grammy": "^1.38.1",
+    "ioredis": "^5.7.0",
+    "nodemailer": "^7.0.5",
+    "telegram": "^2.22.2",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
+    "@types/nodemailer": "^7.0.0"
+  }
+}
