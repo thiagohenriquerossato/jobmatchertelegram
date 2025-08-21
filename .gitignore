@@ -150,9 +150,9 @@ temp/
 
 # Data files - ignore sensitive JSON files but keep directory structure
 data/*.json
-!data/sent-log.json
+# !data/sent-log.json
 
 # Profile files - ignore all profiles except examples
 profiles/*.json
 !profiles/*.example.json
-!profiles/default.json
+# !profiles/default.json
